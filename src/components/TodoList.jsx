@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import imge from "../assets/images/imag.png";
 
 export default function TodoList({ todo, handleDelete, handleEdit }) {
   const [newTitle, setNewTitle] = useState(todo.title); // State to manage the new title for editing
@@ -47,8 +48,8 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
           completed: true,
         };
         await handleEdit(updatedTodo, newTitle); // Mark as complete
-        setOpen(false); // Close modal 
-      }, 1500);
+        setOpen(false); // Close modal
+      }, 1000);
     } else {
       setOpen(false);
     }
@@ -57,7 +58,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
   // Handle the edit functionality
   return (
     <>
-      <div className=" mx-auto text-center  flex justify-center items-center  p-2 ">
+      <div className="mx-auto text-center  flex justify-center items-center  p-2">
         <div className="todo w-full flex items-center justify-between  bg-slate-100  rounded-sm shadow-xl p-2  max-w-md">
           <div className="flex items-center gap-2.5">
             <button onClick={handleOpen}>
@@ -72,7 +73,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
             <input
               type="text"
               value={newTitle}
-              className="list border-gray-200 border-2 p-1 rounded-sm"
+              className="list border-gray-200 border-2 p-1 rounded-sm w-full"
               onChange={handleChange}
             />
           </div>
@@ -101,13 +102,22 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Typography variant="h5" className="capitalize text-center font-bold">
+            congratulations !
+          </Typography>
+
+          <Typography className="flex justify-center items-center pt-2">
+            <img src={imge} alt="" width={100} height={100} />
+          </Typography>
+
           <Typography
             id="modal-modal-title"
             variant="h6"
             component="h2"
-            className="bold capitalize"
+            className=" capitalize font-weight-800 text-gray-500 font-bold text-center"
           >
-            🎉 congratulations you have completed the task !!
+            successfully <br />
+            you have completed the task!!
           </Typography>
         </Box>
       </Modal>
