@@ -47,7 +47,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
           completed: true,
         };
         await handleEdit(updatedTodo, newTitle); // Mark as complete
-        setOpen(false); // Close modal automatically
+        setOpen(false); // Close modal 
       }, 1500);
     } else {
       setOpen(false);
