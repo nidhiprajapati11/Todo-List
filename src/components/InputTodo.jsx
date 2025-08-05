@@ -82,7 +82,7 @@ function InputTodo() {
 
   // Render the component
   return (
-    <div className="min-h-screen bg-black-300 mx-auto text-center  flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 py-10">
+    <div className="min-h-screen bg-black-300 mx-auto text-center  flex flex-col justify-center items-center bg-gradient-to-r from-blue-400 to-purple-500 py-10">
       <div className="bg-white rounded-lg shadow-xl p-5 w-full max-w-md mx-auto">
         <div className="flex text-center justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-center text-gray-800 mb-5 ">
@@ -110,8 +110,8 @@ function InputTodo() {
         <form onSubmit={handleSubmit} className="flex mb-6">
           <input
             type="text"
-            placeholder="Add a new task..."
-            className="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 "
+            placeholder="Add new task..."
+            className="flex-grow p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />

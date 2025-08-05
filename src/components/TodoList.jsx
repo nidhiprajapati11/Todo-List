@@ -24,6 +24,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
     // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    fontWeight: "bold",
   };
 
   // Handle change in the input field for editing
@@ -73,7 +74,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
             <input
               type="text"
               value={newTitle}
-              className="list border-gray-200 border-2 p-1 rounded-sm w-full"
+              className="list border-gray-200 border-1 p-1 rounded-sm w-full"
               onChange={handleChange}
             />
           </div>
@@ -102,7 +103,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography variant="h5" className="capitalize text-center font-bold">
+          <Typography variant="h5" className="capitalize text-center ">
             congratulations !
           </Typography>
 
@@ -114,7 +115,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
             id="modal-modal-title"
             variant="h6"
             component="h2"
-            className=" capitalize font-weight-800 text-gray-500 font-bold text-center"
+            className=" capitalize font-weight-800 text-gray-500  text-center"
           >
             successfully <br />
             you have completed the task!!
