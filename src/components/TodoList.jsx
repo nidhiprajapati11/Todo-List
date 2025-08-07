@@ -14,6 +14,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Modal Style
   const style = {
     position: "absolute",
     top: "50%",
@@ -21,7 +22,6 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
     transform: "translate(-50%, -50%)",
     width: "auto",
     bgcolor: "background.paper",
-    // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
     fontWeight: "bold",
@@ -45,6 +45,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
 
       setTimeout(async () => {
         const updatedTodo = {
+          // Create an updatre todo project
           ...todo,
           completed: true,
         };
@@ -84,13 +85,13 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
               className="text-green-500   items-center"
               onClick={() => handleEdit(todo, newTitle)}
             >
-              <FaEdit id="i" />
+              <FaEdit />
             </button>
             <button
               className="text-red-500 hover:text-red-700 "
               onClick={() => handleDelete(todo.id)}
             >
-              <DeleteIcon id="i" />
+              <DeleteIcon />
             </button>
           </div>
         </div>
@@ -118,7 +119,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
             className=" capitalize font-weight-800 text-gray-500  text-center"
           >
             successfully <br />
-            you have completed the task!!
+            you have completed the task !!
           </Typography>
         </Box>
       </Modal>

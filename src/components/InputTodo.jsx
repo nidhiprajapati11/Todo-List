@@ -21,16 +21,18 @@ function InputTodo() {
   const [showCompleted, setCompleted] = useState(false); // State for completed todos
   const [showNotifications, setShowNotifications] = useState(false);
 
+  // Rainbow colors For Notifications
   const rainbowColors = [
-    "#FF5733", // red-orange
-    "#FF8D1A", // orange
-    "#FFC300", // yellow
-    "#28B463", // green
-    "#1F618D", // blue
-    "#8E44AD", // purple
-    "#E91E63", // pink
+    "#FF8A66", //  red-orange
+    "#FFB347", //  orange
+    "#FFDB66", //  yellow
+    "#58D68D", //  green
+    "#5499C7", //  blue
+    "#BB8FCE", //  purple
+    "#F48FB1", //  pink
   ];
 
+  // Get color based on message
   const getColor = (message) => {
     if (!message) return "#999";
     const charCode = message.charCodeAt(0); // get first character code
@@ -49,7 +51,7 @@ function InputTodo() {
   // Fetch notifications
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "notifications"),
+      collection(db, "notifications"), // Fetch Notifications From Firestore
       (snapshot) => {
         setNotification(
           snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -64,6 +66,7 @@ function InputTodo() {
     e.preventDefault();
     if (title !== "") {
       const docRef = await addDoc(collection(db, "todos"), {
+        // Add a New Todo to Firestore
         title,
         completed: false,
       });
@@ -99,6 +102,7 @@ function InputTodo() {
       });
     }
   };
+
   const notifymodal = async () => {
     setShowNotifications(!showNotifications);
 
@@ -108,10 +112,11 @@ function InputTodo() {
       await updateDoc(notifRef, { read: true });
     });
   };
+
   // Render the component
   return (
     <>
-      <div className="min-h-screen bg-black-300 mx-auto text-center  flex flex-col justify-center items-center bg-gradient-to-r from-blue-400 to-purple-500 py-10">
+      <div className="min-h-screen bg-black-300 mx-auto text-center  flex flex-col justify-center items-center bg-gradient-to-r from-blue-800 to-purple-900 py-10">
         <div className="bg-white rounded-lg shadow-xl p-5 w-full max-w-md mx-auto h-auto ">
           <div className="flex text-center justify-between items-center mb-4">
             <h1 className="text-2xl font-bold text-center text-gray-800 mb-5 underline">
@@ -127,7 +132,7 @@ function InputTodo() {
               >
                 {showNotifications && (
                   <div className="absolute z-50 mt-2 top-5  bg-white shadow-lg rounded-md w-60 h-60 overflow-y-auto border border-gray-300">
-                    <div className="p-3 font-semibold border-b text-gray-700 text-left">
+                    <div className="p-3 font-bold border-b text-gray-700 text-left">
                       Notifications
                     </div>
                     {notification.length > 0 ? (
@@ -155,7 +160,7 @@ function InputTodo() {
                           </Stack>
                         ))
                     ) : (
-                      <div className="px-4 py-2 text-sm text-gray-500 font-bold">
+                      <div className="px-4 py-2 text-sm text-gray-500 font-bold letter-spacing-wide ">
                         No Notifications
                       </div>
                     )}
