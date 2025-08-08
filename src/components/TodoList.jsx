@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Modal from "@mui/material/Modal";
@@ -13,7 +13,8 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [Focused, setFocused] = useState(false);
+  const inputref = useRef(null);
   // Modal Style
   const style = {
     position: "absolute",
@@ -73,6 +74,7 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
             </button>
 
             <input
+              ref={inputref}
               type="text"
               value={newTitle}
               className="list border-gray-200 border-1 p-1 rounded-sm w-full"
@@ -83,7 +85,18 @@ export default function TodoList({ todo, handleDelete, handleEdit }) {
           <div className="flex gap-2.5 items-center justify-center sm:justify-end sm:gap-1 sm:flex-row">
             <button
               className="text-green-500   items-center"
-              onClick={() => handleEdit(todo, newTitle)}
+              onClick={() => {
+                handleEdit(todo, newTitle);
+                if (inputref && inputref.current) {
+                  if (Focused) {
+                    inputref.current.blur(); // remove focus
+                    setFocused(false);
+                  } else {
+                    inputref.current.focus(); // set focus
+                    setFocused(true);
+                  }
+                }
+              }}
             >
               <FaEdit />
             </button>
